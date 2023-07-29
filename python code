@@ -1,0 +1,37 @@
+import random 
+
+print("Enter the number of friends joining (including you):")
+num_friends= int(input())
+if num_friends <= 0:
+    print("No one is joining for the party")
+    exit
+else:
+    dictnr= {}
+    print('Enter the name of every friend (including you), each on a new line:')
+    for _ in range(num_friends):
+        key= input()
+        value= 0
+        dictnr[key]= value
+    bill= float(input("Enter the total bill value:\n"))
+    
+    split= bill/num_friends
+    
+    
+    split= round(split, 2)
+
+    
+    for key in dictnr:
+        dictnr[key] = split
+    luck= input('Do you want to use the "Who is lucky?" feature? Write Yes/No:\n')
+    if luck == 'Yes':
+        luckyy = random.choice(list(dictnr.keys()))
+        print(luckyy,'is the lucky one!')
+        new_split = bill/(num_friends-1)
+        new_split = round(new_split,2)
+        for key in dictnr:
+            dictnr[key] = new_split
+        dictnr[luckyy] = 0
+        print(dictnr)
+    else:
+        print('No one is going to be lucky')
+        print(dictnr)
